@@ -2,6 +2,18 @@
 import {ref} from 'vue';
 import AddButton from './components/AddButton.vue';
 import Card from './components/Card.vue';
+import NoteForm from './components/NoteForm.vue';
+
+let isOpen = ref(false);
+function  toggleOpen(){
+  if (isOpen.value === true){
+    isOpen.value=false
+  }
+  else{
+    isOpen.value=true
+  }
+   
+}
  
 </script>
 
@@ -10,9 +22,10 @@ import Card from './components/Card.vue';
   <h1 class="title">  Заметки
 
     </h1>
-    <AddButton/>
+    <AddButton @click="toggleOpen"/>
+    <NoteForm v-if="isOpen" @onClose="toggleOpen"/>
     <div class="pix">
-    <card/> 
+    <card  title="Gor Mkhitaryan"/> 
        <card/> 
           <card/> 
              <card/> 

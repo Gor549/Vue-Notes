@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-   <h2>My Title</h2>
-   <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the </p>
-   <p class="date"> 27.05.2025 21:21</p>
+   <h2>{{props.title}}</h2>
+   <p class="text">{{props.content}} </p>
+   <p class="date"> {{props.date}}</p>
     </div>
  
 </template>
@@ -10,7 +10,7 @@
 
 <script setup >
 import {defineProps} from 'vue';
- let props=defineProps(['number'])
+ let props=defineProps(['title' , 'content' , 'date'])
 </script>
 
 <style>
@@ -29,5 +29,17 @@ background: linear-gradient(114.43deg, rgba(136, 108, 108, 0.6) 4%, rgba(255, 25
  h2{
   margin-bottom: 30px;
  }
+ .text {
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+}
+.date{
  
+  margin-top: 30px;
+ text-align: right;
+  color: antiquewhite;
+}
+
 </style>
