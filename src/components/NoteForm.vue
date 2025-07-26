@@ -6,9 +6,11 @@
      
         </button>
      <p class="title"> TITLE </p>
-     <input/>
-     <textarea name="" id=""></textarea>
-     <button class="save"> Save </button>
+     <input v-model="title"/>
+
+     <textarea v-model="content" @keydown.enter="$emit('onSave', title,content)"></textarea>
+
+     <button class="save" @click="$emit('onSave', title,content)"> Save </button>
 
     </div>
     </div>
@@ -16,6 +18,22 @@
 
 
 <script  setup>
+import {ref , defineProps, onMounted} from 'vue'
+let props = defineProps(['note'])
+let title = ref('')
+let content = ref ('')
+
+
+
+onMounted(()=>{
+   if(props.note?.title){
+      title.value=props.note.title
+   }
+   if(props.note?.content){
+      content.value = props.note.content
+   }
+
+})
 
 </script>
 
@@ -31,6 +49,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
 
  }
  .form{
@@ -65,6 +84,7 @@
     border: none;
     border-radius: 40px;
     resize: none;
+    padding: 15px;
     
  }
 
